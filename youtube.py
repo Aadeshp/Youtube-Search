@@ -2,6 +2,7 @@
 
 import sys, argparse
 
+"""Change Spaces to '+' for Search Query"""
 def spaces(s):
     arr = []
     for c in s:
@@ -55,12 +56,13 @@ def main():
   
     import webbrowser
     url = "https://www.youtube.com/results?search_query=" + spaces(args.search)
-
+    
+    """Check if args.filter array has items and if a sort_by argument was given"""
     if args.filter:
         url += "&filters=" + "%2C".join(args.filter)
     if args.sort_by:
         url += "&search_sort=" + args.sort_by
-
+    
     webbrowser.open(url)
 
 if __name__ == "__main__":
