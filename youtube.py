@@ -4,14 +4,8 @@ import sys, argparse
 
 """Change Spaces to '+' for Search Query"""
 def spaces(s):
-    arr = []
-    for c in s:
-        if c == " ":
-            arr.append("+")
-        else:
-            arr.append(c)
-
-    return "".join(arr)
+    words = s.split()
+    return "+".join(words)
 
 def main():
     parser = argparse.ArgumentParser()
