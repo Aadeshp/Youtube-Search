@@ -19,12 +19,12 @@
 
 # Examples
 
-The following are a few examples using this script:
+The following are a few examples using this script:\n
 <b>Mandatory Argument: Search</b>
-- ```youtube.py [SEARCH TEXT]``` ([SEARCH TEXT] would be your search text surrounded by <b>QUOTES</b>) - This will open up the youtube video search page with the provided <b>SEARCH TEXT</b>
+- ```youtube.py [SEARCH TEXT]``` (```[SEARCH TEXT]``` would be your search text surrounded by <b>QUOTES</b>) - This will open up the youtube video search page with the provided <b>SEARCH TEXT</b>
 
 <b>Optional Options</b>
-- ```youtube.py "SEARCH TEXT" --upload-date [DATE PARAM]``` - This will do the same as the above command, except it will add the filter for Upload Date
+- ```youtube.py "SEARCH TEXT" --upload-date [DATE ARG]``` - This will do the same as the above command, except it will add the filter for Upload Date. Below are appropriate arguments to replace the ```[DATE ARG]``` placeholder
   - hour
   - today
   - week
