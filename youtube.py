@@ -1,6 +1,78 @@
 #!/usr/bin/env python3
 
-import sys, getopt
+import sys, argparse
+
+def spaces(s):
+    arr = []
+    for c in s:
+        if c == " ":
+            arr.append("+")
+        else:
+            arr.append(c)
+
+    return "".join(arr)
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "search", 
+        action="store", 
+        help="Search Query"
+    )
+    parser.add_argument(
+        "--upload-date",
+        action="append",
+        dest="filter",
+        default=[],
+        help="Upload Date"
+    )
+    parser.add_argument(
+        "--type",
+        action="append",
+        dest="filter",
+        help="Video Type"
+    )
+    parser.add_argument(
+        "--duration",
+        action="append",
+        dest="filter",
+        help="Video Duration"
+    )
+    parser.add_argument(
+        "--feature",
+        action="append",
+        dest="filter",
+        help="Video Features"
+    )
+    parser.add_argument(
+        "--sort-by",
+        action="store",
+        dest="sort_by",
+        help="Default is Sort By Relevance"
+    )
+
+    args = parser.parse_args(sys.argv[1:])
+  
+    import webbrowser
+    url = "https://www.youtube.com/results?search_query=" + spaces(args.search)
+
+    if args.filter:
+        url += "&filters=" + "%2C".join(args.filter)
+    if args.sort_by:
+        url += "&search_sort=" + args.sort_by
+
+    webbrowser.open(url)
+
+if __name__ == "__main__":
+    if len(sys.argv) < 2:
+        raise Exception("Error: Search Argument Required")
+    else:
+        main()
+
+"""
+------Using module: optarg instead of argparser------
+
+import getopt
 
 def help():
     print("\n======OPTIONS======")
@@ -28,16 +100,6 @@ def help():
     print("Default Argument:\n\trelevance")
     print("Appropriate Arguments:\n\tvideo_date_uploaded\n\tvideo_view_count\n\tvideo_avg_rating")
      
-def spaces(s):
-    arr = []
-    for c in s:
-        if c == " ":
-            arr.append("+")
-        else:
-            arr.append(c)
-
-    return "".join(arr)
-
 def main():
     search = ""
     filters = []
@@ -52,23 +114,17 @@ def main():
     for opt, arg in opts:
         if opt == "--search":
             search = spaces(arg)
-        elif opt in ("--upload-date", "--type", "--duration", "--feature", "--sort-by"):
+        elif opt in ("--upload-date", "--type", "--duration", "--feature"):
             filters.append(arg)
+        elif opt == "--sort-by":
+            search_sort = arg
         else:
-            assert False, "Error:\n\tInvalid Option opt"
+            assert False, "Error:\n\tInvalid Option " + opt
 
     import webbrowser
     url = "https://www.youtube.com/results?search_query=" + search + "&filters=" + "%2C".join(filters)
     if len(search_sort) > 0:
-        url += "&search_sort=" + search_short
+        url += "&search_sort=" + search_sort
 
     webbrowser.open(url)
-
-
-if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        raise Exception("Error: Search Argument Required")
-    elif sys.argv[1] == "help":
-        help()
-    else:
-        main()
+"""
