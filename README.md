@@ -19,7 +19,7 @@
 
 # Examples
 
-The following are a few examples using this script:\n
+The following are a few examples using this script
 <b>Mandatory Argument: Search</b>
 - ```youtube.py [SEARCH TEXT]``` (```[SEARCH TEXT]``` would be your search text surrounded by <b>QUOTES</b>) - This will open up the youtube video search page with the provided <b>SEARCH TEXT</b>
 
