@@ -70,7 +70,7 @@ if __name__ == "__main__":
         main()
 
 """
-------Using module: optarg instead of argparser------
+------Using getopt instead of argparse------
 
 import getopt
 
