@@ -26,7 +26,7 @@ Below I will briefly explain how to use this script and the types of arguments:
   - ```youtube.py [SEARCH TEXT]``` (```[SEARCH TEXT]``` would be your search text surrounded by <b>QUOTES</b>) - This will open up the youtube video search page with the provided <b>SEARCH TEXT</b>
 
 <b>Optional Argument(s):</b>
-- ```youtube.py "SEARCH TEXT" --upload-date [DATE ARG]``` - This will do the same as the above command, except it will add the filter for Upload Date. Below are appropriate arguments to replace the ```[DATE ARG]``` placeholder
+- ```youtube.py "SEARCH TEXT" --upload-date [DATE ARG]``` OR ```youtube.py "SEARCH TEXT" -u [DATE ARG]``` - This will do the same as the above command, except it will add the filter for Upload Date. Below are appropriate arguments to replace the ```[DATE ARG]``` placeholder
   - hour
   - today
   - week
