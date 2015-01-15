@@ -3,67 +3,67 @@
 import sys, argparse
 
 """Change Spaces to '+' for Search Query"""
-def spaces(s):
-    words = s.split()
-    return "+".join(words)
 
-def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "search", 
-        action="store", 
-        help="Search Query"
-    )
-    parser.add_argument(
-        "--upload-date",
-        action="append",
-        dest="filter",
-        default=[],
-        help="Upload Date"
-    )
-    parser.add_argument(
-        "--type",
-        action="append",
-        dest="filter",
-        help="Video Type"
-    )
-    parser.add_argument(
-        "--duration",
-        action="append",
-        dest="filter",
-        help="Video Duration"
-    )
-    parser.add_argument(
-        "--feature",
-        action="append",
-        dest="filter",
-        help="Video Features"
-    )
-    parser.add_argument(
-        "--sort-by",
-        action="store",
-        dest="sort_by",
-        help="Default is Sort By Relevance"
-    )
+class YoutubeSearch:
+    def __init__(self):   
+        self.initArgParse()
 
-    args = parser.parse_args(sys.argv[1:])
-  
-    import webbrowser
-    url = "https://www.youtube.com/results?search_query=" + spaces(args.search)
+    def initArgParse(self):
+        """Create All Options"""
+        self.parser = argparse.ArgumentParser()
+        self.addArgument("search", "store", "Search Query")
+        self.addArgument("--upload-date", "append", "Upload Date", "filter")
+        self.addArgument("--type", "append", "Video Type", "filter")
+        self.addArgument("--duration", "append", "Video Duration", "filter")
+        self.addArgument("--feature", "append", "Specific Features", "filter")
+        self.addArgument("--sort", "store", "Sorting Pattern", "sort_by")
+
+        self.args = self.parser.parse_args()
     
-    """Check if args.filter array has items and if a sort_by argument was given"""
-    if args.filter:
-        url += "&filters=" + "%2C".join(args.filter)
-    if args.sort_by:
-        url += "&search_sort=" + args.sort_by
+    """Adds an argument to the class argparser"""
+    def addArgument(self, opt, action, help, dest=None):
+        if dest:
+            self.parser.add_argument(
+                str(opt),
+                action=action,
+                dest=dest,
+                help=help
+            )
+        else:
+            self.parser.add_argument(
+                str(opt),
+                action=action,
+                help=help
+            )
     
-    webbrowser.open(url)
+    """A new tab of youtube video search page will open up, displaying the videos matching the specified arguments inputted"""
+    def search(self):
+        import webbrowser
+        url = "https://www.youtube.com/results?search_query=" + self.toProperSearchQuery()
+    
+        """Check if args.filter array has items and if a sort_by argument was given"""
+        if self.args.filter:
+            url += "&filters=" + "%2C".join(self.args.filter)
+        if self.args.sort_by:
+            url += "&search_sort=" + self.args.sort_by
+    
+        webbrowser.open(url)
+ 
+    """
+    Change Spaces to Plus Signs
+    Ex) "This Is My Search Text" -> "This+Is+My+Search+Text"
+    """
+    def toProperSearchQuery(self):
+        words = self.args.search.split()
+        return "+".join(words)
 
 if __name__ == "__main__":
+    """Check If Any Arguments Were Given"""
     if len(sys.argv) < 2:
         raise Exception("Error: Search Argument Required")
     else:
-        main()
+        s = YoutubeSearch()
+        s.search()
 
 """
 ------Using getopt instead of argparse------
