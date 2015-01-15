@@ -17,13 +17,15 @@
 4. Now run the command ```source ~/.bashrc``` or ```source ~/.bash_profile``` (Depending on which you used from step 2)
 5. Now run the command ```$PATH``` to double check that your local bin folder is now in $PATH
 
-# Examples
+# How To
 
-*The following are a few examples using this script*
-> <b>Mandatory Argument: Search</b>
-- ```youtube.py [SEARCH TEXT]``` (```[SEARCH TEXT]``` would be your search text surrounded by <b>QUOTES</b>) - This will open up the youtube video search page with the provided <b>SEARCH TEXT</b>
+Below I will briefly explain how to use this script and the types of arguments:
 
-> <b>Optional Options</b>
+<b>Positional (Mandatory) Argument(s): 
+- Search</b>
+  - ```youtube.py [SEARCH TEXT]``` (```[SEARCH TEXT]``` would be your search text surrounded by <b>QUOTES</b>) - This will open up the youtube video search page with the provided <b>SEARCH TEXT</b>
+
+<b>Optional Argument(s):</b>
 - ```youtube.py "SEARCH TEXT" --upload-date [DATE ARG]``` - This will do the same as the above command, except it will add the filter for Upload Date. Below are appropriate arguments to replace the ```[DATE ARG]``` placeholder
   - hour
   - today
