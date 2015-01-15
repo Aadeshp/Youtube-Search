@@ -22,8 +22,10 @@ class YoutubeSearch:
     
     """Adds an argument to the class argparser"""
     def addArgument(self, opt, action, help, dest=None):
+        """Check If Creating Positional or Optional Argument"""
         if dest:
             self.parser.add_argument(
+                "-" + opt[2],
                 str(opt),
                 action=action,
                 dest=dest,
