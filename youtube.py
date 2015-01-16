@@ -2,14 +2,11 @@
 
 import sys, argparse
 
-"""Change Spaces to '+' for Search Query"""
-
-
 class YoutubeSearch:
-    def __init__(self, filter, to_search=None, sort_by=None):
+    def __init__(self, to_search, filter=[], sort_by=None):
+        self.to_search = to_search
         self.filter = filter
         self.sort_by = sort_by
-        self.to_search = to_search
 
 
     """A new tab of youtube video search page will open up, displaying the videos matching the specified arguments inputted"""
@@ -50,5 +47,5 @@ if __name__ == "__main__":
         raise Exception("Error: Search Argument Required")
 
     args = initArgParse()
-    s = YoutubeSearch(args.filter, args.search, args.sort_by)
+    s = YoutubeSearch(args.search, args.filter, args.sort_by)
     s.search()
