@@ -17,7 +17,7 @@
 4. Now run the command ```source ~/.bashrc``` or ```source ~/.bash_profile``` (Depending on which you used from step 2)
 5. Now run the command ```$PATH``` to double check that your local bin folder is now in $PATH
 
-# How To
+# How To Use
 
 Below I will briefly explain how to use this script and the types of arguments:
 
